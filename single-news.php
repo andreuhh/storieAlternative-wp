@@ -4,7 +4,8 @@
     while(have_posts()) {
         the_post(); ?>
          <!-- about -->
-         <img class="immagineBlogBig" src="<?php the_field('immagine_blog'); ?>" alt="">
+         <div class="hero hero__news">
+    <div class="hero__content "></div>
   </div>
 
   <main class="main__project">
@@ -19,7 +20,6 @@
         <p>
           <?php the_content(); ?>
         </p>
-        <img class="immagineBlogMedia" src="<?php the_field('immagine_media_blog'); ?>" alt="">
         <br>
         <br>
         

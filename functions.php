@@ -25,7 +25,7 @@ add_action( 'after_setup_theme', 'wsa_setup' );
 
 
 function storie_files(){
-	//wp_enqueue_style('wpstorie_main_styles', get_stylesheet_uri());
+	//wp_enqueue_script( 'storie_js', get_theme_file_uri('/inc/js/app.js'), NULL, '1.0', true);
 
 	wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css');
 
@@ -33,7 +33,6 @@ function storie_files(){
 	// enqueue our style.css file
 	wp_enqueue_style( 'wsa-reset', get_stylesheet_directory_uri().'/style.css', array(), WSA_VERSION, 'all' );
     wp_enqueue_style( 'wsa-style', WSA_INCLUDES.'/css/style.css', array( 'wsa-reset' ), WSA_VERSION, 'all' );
-	
 }
 add_action('wp_enqueue_scripts', 'storie_files');
 

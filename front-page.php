@@ -21,7 +21,7 @@
         della città e quella delle persone che ogni giorno arrivano a visitarla. 
         Ognuno di noi contribuisce ogni giorno a raccontare la storia della città in 
         modo unico e personale: attraverso parole, fotografie, disegni, verità o bugie.
-        <span><a class="showMore" href="">Scopri di più</a></span>
+        <span><a class="showMore" href="<?php echo site_url('/chisiamo')?>">Scopri di più</a></span>
       </p>
       
     </section>
@@ -66,68 +66,41 @@
     <section class="projects">
 
       <article class="projects__container">
-        <div class="projects__container__single">
-            <img src="<?php echo get_theme_file_uri('img/senzamemoria-sm.jpg')?>" alt="hytta project website img" width="100%" height="auto">
-            
-          <a href="singleArticle.html"><h4>Lo spaccio dei poli</h4></a>
-          <p class="ceraUnaVoltaCat">C'era una volta</p>
-          <p>Oggi è un giorno arido. Il sole appiattisce ogni forma, la proietta sull'asfalto. 
-            Evidenzia i tratti e li imprime nella memoria con una lucidità surreale. 
-            Camminiamo uno accanto all'altro, 
-            ma assolutamente distanti, senza dire una parola.</p>
-            <div class="article-info">
-              <p>data</p>
-              <p>Nome autore</p>
+        <?php 
+          $homepagePosts = new WP_Query(array(
+            'posts_per_page' => 4
+          ));
+
+          while($homepagePosts->have_posts()){
+            $homepagePosts->the_post(); ?>
+
+            <div class="projects__container__single">
+                <img src="<?php the_field('immagine_blog'); ?>" alt="" width="100%" height="auto">
+                
+            <a href="<?php the_permalink(); ?>"><h4><?php the_title();?></h4></a>
+            <p class="ceraUnaVoltaCat"><?php echo get_the_category_list(', ')?></p>
+
+            <p>
+                <?php if(has_excerpt()){
+                echo get_the_excerpt();
+                } else {
+                    echo wp_trim_words(get_the_content(), 20);
+                }?>
+            </p>
+
+                <div class="article-info">
+                <p><?php the_time('M Y'); ?></p>
+                <p><?php the_author(); ?></p>
+                </div>
             </div>
-        </div>
 
-        <div class="projects__container__single">
-          <img src="<?php echo get_theme_file_uri('img/roccaforte-sm.jpg')?>" alt="image acme project" width="100%" height="auto">
-          <a href="acme.html"><h4>La roccaforte di Milano</h4></a>
-          <p class="inCamminoCat">In Cammino</p>
-          <p>Via Romualdo Bonfadini. Lungo la strada si affacciano condomini 
-            di cemento e villette nascoste dalle siepi. Poco più avanti un enorme 
-            prato chiuso da una recinzione arrugginita: lavori in corso.
-            Qui i lavori ci sono sempre stati.
-          </p>
-          <div class="article-info">
-            <p>data</p>
-            <p>Nome autore</p>
-          </div>
-        </div>
+          <?php } wp_reset_postdata();
+        ?>
 
-      </article>
-
-      <article class="projects__container">
-        <div class="projects__container__single">
-          <img src="<?php echo get_theme_file_uri('img/paglib-sm.jpg')?>" alt="resort with poll" width="100%" height="auto">
-          <a href="reactresort.html"><h4>Tra le pagine dei libri</h4></a>
-          <p class="incontriScontriCat">Incontri e scontri</p>
-          <p>Me ne stavo lì, al piano di sopra, dove ci sono i libri usati, intento a 
-            spulciare le pagine di un vecchio tomo di racconti per 
-            bambini che mi aveva colpito per la crudezza dei disegni in copertina.
-          </p>
-          <div class="article-info">
-            <p>data</p>
-            <p>Nome autore</p>
-          </div>
-        </div>
-
-        <div class="projects__container__single">
-          <img src="<?php echo get_theme_file_uri('img/spacciopoli-sm.jpg')?>" alt="hytta project website img" width="100%" height="auto">
-        <a href="hytta.html"><h4>Lo spaccio dei poli</h4></a>
-        <p class="ceraUnaVoltaCat">C'era una volta</p>
-        <p>Oggi è un giorno arido. Il sole appiattisce ogni forma, la proietta sull'asfalto. 
-          Evidenzia i tratti e li imprime nella memoria con una lucidità surreale. 
-          Camminiamo uno accanto all'altro, 
-          ma assolutamente distanti, senza dire una parola.</p>
-          <div class="article-info">
-            <p>data</p>
-            <p>Nome autore</p>
-          </div>
-      </div>
         
+
       </article>
+
  
       <a href="<?php echo site_url('/articoli')?>">
         <button aria-label="Shoe all project" class="btn--primary">Mostra tutti</button>
@@ -145,47 +118,37 @@
     </section>
 
     <section class="blog">
-      <article class="blog__container">
 
+    <?php 
+      $homepageNews = new WP_Query(array(
+        'posts_per_page' => 2,
+        'post_type' => 'news'
+      ));
+
+      while($homepageNews->have_posts()) {
+        $homepageNews->the_post(); ?>
+      <article class="blog__container">
         <div class="blog__container__single">
-          <img src="<?php echo get_theme_file_uri('img/spacciopoli-sm.jpg')?>" alt="flutter img" width="100%" height="auto"> 
+          <img src="<?php the_field('immagine_smallnews'); ?>" alt="flutter img" width="100%" height="auto"> 
           <div class="blog__container__single--container">
             
-            <a href="art-flutter.html"><h4>Nuove prospettive</h4></a>
+            <a href="<?php the_permalink() ?>"><h4><?php the_title(); ?></h4></a>
         
             <p>
-              Ci ritroveremo nel parcheggio della Stazione di Lambrate.
-              Dopo una breve passeggiata ci sederemo in cima alla Collinetta del Parco Lambro
-              da cui potremo avere un anuova prospettiva sulla città.
+            <?php if(has_excerpt()){
+                echo get_the_excerpt();
+                } else {
+                    echo wp_trim_words(get_the_content(), 20);
+                }?>
             </p>
 
-            <p class="date">October 2020</p>
+            <p class="date"><?php the_time('M Y'); ?></p>
             
           </div>   
         </div>
-
       </article>
-
-      <article class="blog__container">
-
-        <div class="blog__container__single">
-          <img src="<?php echo get_theme_file_uri('img/spacciopoli-sm.jpg')?>" alt="flutter img" width="100%" height="auto"> 
-          <div class="blog__container__single--container">
-            
-            <a href="art-flutter.html"><h4>Nuove prospettive</h4></a>
-        
-            <p>
-              Ci ritroveremo nel parcheggio della Stazione di Lambrate.
-              Dopo una breve passeggiata ci sederemo in cima alla Collinetta del Parco Lambro
-              da cui potremo avere un anuova prospettiva sulla città.
-            </p>
-
-            <p class="date">October 2020</p>
-            
-          </div>   
-        </div>
-
-      </article>
+        <?php }
+    ?>
       
     </section>    
 

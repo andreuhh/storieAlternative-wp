@@ -431,6 +431,7 @@ p {
   Hero
   ===============
   */
+
 .hero {
     height: 80vh;
     background: url(img/bg.jpg) no-repeat center center;
@@ -746,6 +747,10 @@ p.incontriScontriCat {
   EVENTI
   ===============
   */
+.hero__news {
+    height: 60vh !important;
+}
+
 .blog__container {
     text-align: left;
     padding-top: 2%;
@@ -902,7 +907,7 @@ footer h4 {
 
 /*
   =============== 
-  Projects Page
+  News Page
   ===============
   */
 
@@ -1028,6 +1033,12 @@ footer h4 {
 
 .hero--project.hero--project--tranqui {
     background: url(img/tranqui-bg.jpg) no-repeat center center;
+}
+
+.immagineBlogBig {
+    padding: 2% 0 0 0;
+    width: 100%;
+    height: auto;
 }
 
 .main__project h1 {
