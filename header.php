@@ -25,14 +25,10 @@
       <!-- nav header -->
       <div class="nav-header">
         <div class="logo">
-          <a href="index.html">
-            <img src="img/logo-single.png" alt="logo" width="100" height="auto">
+          <a href="<?php echo site_url('/')?>">
+            <img src="<?php echo get_theme_file_uri('img/logo-single.png')?>" alt="logo" width="100" height="auto">
           </a> 
         </div>
-
-      
-      
-         <!-- <a href="index.html">Guffi Andrea</a> -->
         
         <button class="nav-btn" id="nav-btn">
           <i class="fas fa-bars"></i>
@@ -41,19 +37,19 @@
       <!-- nav-links -->
       <ul class="nav-links">
         <li>
-          <a href="articoli.html">Articoli</a>
+          <a <?php if(is_page('articoli')) echo'class="active"'?> href="<?php echo site_url('/articoli')?>">Articoli</a>
         </li>
         <li>
-          <a href="mappe.html">Mappe</a>
+          <a <?php if(is_page('mappe')) echo'class="active"'?> href="<?php echo site_url('/mappe')?>">Mappe</a>
         </li>
         <li>
-          <a href="scrivimi.html">Scrivi-Mi</a>
+          <a <?php if(is_page('scrivimi')) echo'class="active"'?> href="<?php echo site_url('/scrivimi')?>">Scrivi-Mi</a>
         </li>
         <li>
-          <a href="about.html">Chi siamo</a>
+          <a <?php if(is_page('chisiamo')) echo'class="active"'?> href="<?php echo site_url('/chisiamo')?>">Chi siamo</a>
         </li> 
         <li>
-          <a href="news.html">News</a>
+          <a <?php if(is_page('news')) echo'class="active"'?> href="<?php echo site_url('/news')?>">News</a>
         </li> 
       </ul>
     </div>

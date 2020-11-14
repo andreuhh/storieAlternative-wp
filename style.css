@@ -21,12 +21,20 @@ Tags: blog, custom-menu, map, featured-images, footer-widgets, theme-options, tr
     padding: 0;
 }
 
+html,
+body {
+    margin: 0 !important;
+}
+
+
+
 
 /*
 =============== 
 Variables
 ===============
 */
+
 :root {
     --dark-background: #2F2D2B;
     --text: #14181a;
@@ -56,7 +64,16 @@ Variables
   ===============
   */
 
-
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* added later */
+    margin: 0;
+    padding: 0;
+}
 
 body {
 
@@ -174,6 +191,14 @@ p {
     align-items: center;
     align-content: center;
     text-align: center;
+}
+
+.centered {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }
 
 .logo a:hover {
@@ -907,7 +932,10 @@ footer h4 {
   ===============
   */
 .hero--about {
-    background: url(img/fotoMilano.jpg) no-repeat center center;
+    background: url(img/about.jpg) no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
 }
 
 .hero__content--about h1 {
@@ -922,6 +950,27 @@ footer h4 {
 
 .description--sport {
     padding-top: 15%;
+}
+
+.about main hr,
+.scrivimi main hr {
+    width: 50%;
+    margin: 0 auto;
+    border: 2px solid #EDE6E0;
+}
+
+.about main section article {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    column-gap: 50px;
+}
+
+.about main section article img {
+    border-radius: 100%;
+}
+
+.presentazione {
+    padding: 3% 0 2% 0;
 }
 
 
@@ -1043,4 +1092,35 @@ footer h4 {
   */
 .hero--scrivimi {
     background: url(img/scrivimi-bg.jpg) no-repeat center center;
+    height: 60vh;
+}
+
+.categories-container img {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.scrivimi .categories-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.categories-container article {
+    flex: 0 0 calc(30% - 20px);
+    padding: 20px;
+    margin: 10px;
+}
+
+.categories-container article p {
+    text-align: center;
+}
+
+
+
+
+
+html {
+    margin: 0 !important;
 }

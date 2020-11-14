@@ -2,7 +2,7 @@
 <main>
 
 
-    <h2>Articoli</h2>
+    <h2>Archivio</h2>
     <section class="projects">
         <article class="projects__container">
         <?php
@@ -10,7 +10,7 @@
             the_post(); ?>
 
             <div class="projects__container__single">
-                <img src="<?php echo get_theme_file_uri('img/senzamemoria-sm.jpg')?>" alt="hytta project website img" width="100%" height="auto">
+                <img src="img/senzamemoria-sm.jpg" alt="hytta project website img" width="100%" height="auto">
                 
             <a href="<?php the_permalink(); ?>"><h4><?php the_title();?></h4></a>
             <p class="ceraUnaVoltaCat"><?php echo get_the_category_list(', ')?></p>
